@@ -1,50 +1,60 @@
 package mx.edu.tecdesoftware.market_backend.domain;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class PurchaseItem {
 
-    private int purchaseId;
-    private int productId;
-    private int quantity;
-    private double total;
-    private boolean status;
+    private Integer purchaseId;
 
-    public int getPurchaseId() {
+    @JsonProperty("idProducto")
+    private Integer productId;
+
+    @JsonProperty("cantidad")
+    private Integer quantity;
+
+    private Double total;
+
+    @JsonProperty("estado")
+    private Boolean active;
+
+    // Getters y Setters
+    public Integer getPurchaseId() {
         return purchaseId;
     }
 
-    public void setPurchaseId(int purchaseId) {
+    public void setPurchaseId(Integer purchaseId) {
         this.purchaseId = purchaseId;
     }
 
-    public int getProductId() {
+    public Integer getProductId() {
         return productId;
     }
 
-    public void setProductId(int productId) {
+    public void setProductId(Integer productId) {
         this.productId = productId;
     }
 
-    public int getQuantity() {
+    public Integer getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(int quantity) {
+    public void setQuantity(Integer quantity) {
         this.quantity = quantity;
     }
 
-    public double getTotal() {
+    public Double getTotal() {
         return total;
     }
 
-    public void setTotal(double total) {
+    public void setTotal(Double total) {
         this.total = total;
     }
 
-    public boolean isStatus() {
-        return status;
+    public Boolean isActive() {
+        return active;
     }
 
-    public void setStatus(boolean status) {
-        this.status = status;
+    public void setActive(Boolean active) {
+        this.active = active;
     }
 }

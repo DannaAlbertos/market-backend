@@ -22,7 +22,6 @@ public class ProductoRepository implements ProductRepository {
     private ProductMapper productMapper;
 
     public List<Product> getAll(){
-        // Corrección: Iterar el resultado en lugar de intentar castearlo a la fuerza
         Iterable<Producto> iterable = productoCrudRepository.findAll();
         List<Producto> productos = new ArrayList<>();
         iterable.forEach(productos::add);
@@ -31,7 +30,8 @@ public class ProductoRepository implements ProductRepository {
     }
 
     public Optional<List<Product>> getByCategory(int categoryId) {
-        List<Producto> productos = productoCrudRepository.findByCategoriaOrderByNombreAsc(categoryId);
+        // Se llama al método actualizado en el CRUD
+        List<Producto> productos = productoCrudRepository.findByCategoriaIdCategoriaOrderByNombreAsc(categoryId);
         return Optional.of(productMapper.toProducts(productos));
     }
 

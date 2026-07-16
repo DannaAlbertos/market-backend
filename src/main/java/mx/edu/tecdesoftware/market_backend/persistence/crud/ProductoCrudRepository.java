@@ -6,22 +6,11 @@ import org.springframework.data.repository.CrudRepository;
 import java.util.List;
 import java.util.Optional;
 
-public interface ProductoCrudRepository
-        extends CrudRepository<Producto, Integer> {
-    //Query Method
-    /*
-    SELECT *
-    FROM categorias
-    WHERE id_categoria = ?
-    ORDER BY nombre ASC
-     */
+public interface ProductoCrudRepository extends CrudRepository<Producto, Integer> {
 
-    //Obtener una Lista de productos filtrados por id de categoria
-    // y ordenados ascendentemente por nombre
+    // Método corregido: Se usa 'CategoriaIdCategoria' para buscar por el ID dentro de la entidad Categoria
+    List<Producto> findByCategoriaIdCategoriaOrderByNombreAsc(int idCategoria);
 
-    List<Producto>findByCategoriaOrderByNombreAsc(int idCategoria);
-
-    //Obtener los productos con bajo stock
-    Optional<List<Producto>> findByCantidadStockLessThanAndEstado(
-            int cantidad, boolean estado);
+    // Obtener los productos con bajo stock
+    Optional<List<Producto>> findByCantidadStockLessThanAndEstado(int cantidad, boolean estado);
 }
